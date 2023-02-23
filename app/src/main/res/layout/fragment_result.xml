@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/resultFragment"
+    tools:context=".ResultFragment">
+
+    <TextView
+        android:id="@+id/nameFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="First Name"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Love with"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="80dp" />
+    <TextView
+        android:id="@+id/nameSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Second Name"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="100dp" />
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Score"
+        android:textSize="50sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="200dp" />
+    <TextView
+        android:id="@+id/percent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="300dp" />
+
+    <Button
+        android:id="@+id/tryAgainBtn"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:textSize="40sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="370dp"
+        android:hint="Try Again"
+        android:textColor="@color/white"
+        />
+</FrameLayout>
