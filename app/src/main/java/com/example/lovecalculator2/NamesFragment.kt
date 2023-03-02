@@ -7,14 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator2.databinding.FragmentNamesBinding
+import com.example.lovecalculator2.remote.LoveModel
+import com.example.lovecalculator2.remote.LoveService
+import com.example.lovecalculator2.viewmodel.LoveViewModel
 import retrofit2.Call
 import retrofit2.Response
 
 class NamesFragment : Fragment() {
 
     private lateinit var binding: FragmentNamesBinding
+    private val viewModel: LoveViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,20 +32,11 @@ class NamesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
             calculateBtn.setOnClickListener{
-                LoveService().api.calculatePercentage(
-                    firstName = firstEd.text.toString(),
-                    secondName = secondEd.text.toString()
-                ).enqueue(object :retrofit2.Callback<LoveModel>{
-                    override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
-                        if(response.isSuccessful){
-                            findNavController().navigate(R.id.resultFragment, bundleOf("loveModel" to response.body()))
-                        }
-                    }
-
-                    override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-                        Log.e("ololo", "onFailure: ${t.message}")
-                    }
-                })
+                viewModel.getLiveLove(firstEd.text.toString(), secondEd.text.toString())
+                    .observe(viewLifecycleOwner,
+                        Observer { loveModel-> findNavController().navigate(R.id.resultFragment, bundleOf("loveModel" to loveModel))
+                            Log.e("ololo", "onViewCreated: $loveModel", )
+                    })
             }
         }
     }

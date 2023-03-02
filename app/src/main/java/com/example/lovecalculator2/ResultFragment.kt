@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator2.databinding.FragmentResultBinding
+import com.example.lovecalculator2.remote.LoveModel
 
 
+@Suppress("DEPRECATION")
 class ResultFragment : Fragment() {
 
     private lateinit var binding: FragmentResultBinding
