@@ -11,11 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator2.databinding.FragmentNamesBinding
-import com.example.lovecalculator2.remote.LoveModel
-import com.example.lovecalculator2.remote.LoveService
 import com.example.lovecalculator2.viewmodel.LoveViewModel
-import retrofit2.Call
-import retrofit2.Response
+import dagger.hilt.android.AndroidEntryPoint
 
 class NamesFragment : Fragment() {
 

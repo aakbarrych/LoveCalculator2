@@ -2,16 +2,16 @@ package com.example.lovecalculator2.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.lovecalculator2.remote.LoveApi
 import com.example.lovecalculator2.remote.LoveModel
-import com.example.lovecalculator2.remote.LoveService
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
+import javax.inject.Inject
 
-class Repository {
+class Repository @Inject constructor(val api: LoveApi) {
     fun getLove(firstName: String, secondName: String): MutableLiveData<LoveModel>{
         val liveLoveData = MutableLiveData<LoveModel>()
-        LoveService().api.calculatePercentage(firstName, secondName)
+        api.calculatePercentage(firstName, secondName)
             .enqueue(object: retrofit2.Callback<LoveModel> {
                 override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
                     if(response.isSuccessful){
