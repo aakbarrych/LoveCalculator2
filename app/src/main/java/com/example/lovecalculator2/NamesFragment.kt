@@ -14,6 +14,8 @@ import com.example.lovecalculator2.databinding.FragmentNamesBinding
 import com.example.lovecalculator2.viewmodel.LoveViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class NamesFragment : Fragment() {
 
     private lateinit var binding: FragmentNamesBinding
@@ -28,11 +30,14 @@ class NamesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
+            binding.historyBtn.setOnClickListener{
+                findNavController().navigate(R.id.historyFragment)
+            }
             calculateBtn.setOnClickListener{
                 viewModel.getLiveLove(firstEd.text.toString(), secondEd.text.toString())
                     .observe(viewLifecycleOwner,
                         Observer { loveModel-> findNavController().navigate(R.id.resultFragment, bundleOf("loveModel" to loveModel))
-                            Log.e("ololo", "onViewCreated: $loveModel", )
+                            App.appDataBase.loveDao().insert(loveModel)
                     })
             }
         }

@@ -26,5 +26,12 @@
         android:textSize="30dp"
         android:text="Calculate"
         />
+    <Button
+        android:id="@+id/historyBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="History"
+        />
 
 </LinearLayout>

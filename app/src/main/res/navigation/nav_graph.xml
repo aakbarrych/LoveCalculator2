@@ -22,4 +22,9 @@
         android:id="@+id/onBoardingFragment"
         android:name="com.example.lovecalculator2.onboarding.OnBoardingFragment"
         android:label="OnBoardingFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.lovecalculator2.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>
