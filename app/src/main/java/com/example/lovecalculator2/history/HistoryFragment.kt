@@ -33,5 +33,9 @@ class HistoryFragment : Fragment() {
 //        }
         binding.historyRv.adapter = adapter
         adapter.addSortedItems(App.appDataBase.loveDao().getSortedNames())
+        
+        binding.homeBtn.setOnClickListener{
+            findNavController().navigate(R.id.namesFragment)
+        }
     }
 }
