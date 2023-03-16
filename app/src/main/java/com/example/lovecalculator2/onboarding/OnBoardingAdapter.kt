@@ -11,10 +11,10 @@ import com.example.lovecalculator2.databinding.ItemOnboardingBinding
 class OnBoardingAdapter(private val onClick: () -> Unit) : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>()  {
 
     private val data = arrayListOf(
-        OnBoard( "It's funs and many more.", R.drawable.ic_launcher_foreground),
-        OnBoard( "It's funs and i wanna eat.", R.drawable.ic_launcher_foreground),
-        OnBoard( "It's funs and thats all.", R.drawable.ic_launcher_foreground),
-        OnBoard( "It's funs and i dislike adabiyat.", R.drawable.ic_launcher_foreground)
+        OnBoard( "It's funs and many more.", R.raw.laptop),
+        OnBoard( "It's funs and i wanna eat.",R.raw.task),
+        OnBoard( "It's funs and thats all.", R.raw.task2),
+        OnBoard( "It's funs and i dislike adabiyat.", R.raw.laptop)
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
@@ -33,9 +33,10 @@ class OnBoardingAdapter(private val onClick: () -> Unit) : RecyclerView.Adapter<
         fun bind(onBoard: OnBoard) {
             binding.apply {
                 binding.tvDesc.text = onBoard.desc
-                onBoard.image?.let { ivOnBoard.setImageResource(it) }
+                onBoard.image?.let {
+                    binding.ivOnBoard.setAnimation(it)
+                }
             }
-
             binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.btnStart.setOnClickListener{
                 onClick()

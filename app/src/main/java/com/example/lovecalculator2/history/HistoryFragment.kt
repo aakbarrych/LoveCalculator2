@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator2.App
+import com.example.lovecalculator2.R
 import com.example.lovecalculator2.databinding.FragmentHistoryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,5 +35,9 @@ class HistoryFragment : Fragment() {
 //        }
         binding.historyRv.adapter = adapter
         adapter.addSortedItems(App.appDataBase.loveDao().getSortedNames())
+
+        binding.homeBtn.setOnClickListener{
+            findNavController().navigate(R.id.namesFragment)
+        }
     }
 }
